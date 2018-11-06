@@ -1,0 +1,16 @@
+aside.menu
+  p.menu-label
+    | Matches
+  ul.menu-list
+    li = link_to  "Upcoming", upcoming_matches_path
+    li = link_to  "All", all_matches_path
+  p.menu-label
+    | Users
+  ul.menu-list
+    li = link_to  "Leaderboard", leaderboard_path
+    li = link_to  "My account", edit_user_registration_path
+  p.menu-label
+    | Other
+  ul.menu-list
+    li = link_to  "About", about_path
+    li = link_to  "Rules", rules_path

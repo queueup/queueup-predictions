@@ -1,0 +1,42 @@
+.content
+  .columns
+    .column.is-one-fifth
+      = image_tag avatar_url(@user.email, 128), class: 'is-rounded is-128x128'
+    .column
+      h1.is-size-1
+        = @user.username
+      h3.is-size-3
+        = "#{@user.score} points"
+  .columns
+    .column
+      - @user.predictions.joins(:match).order('matches.started_at ASC').group_by {|t| t.match.started_at.beginning_of_day }.each do |day, grouped_predictions|
+        - date = day.strftime("%d-%m-%Y")
+        h2.is-size-3 id="#{date}"
+          = link_to day.strftime("%d %B %Y"), "##{date}", style: 'color: #000'
+        - grouped_predictions.in_groups_of(2).each do |gpredictions|
+          .columns
+            - gpredictions.each do |prediction|
+              - match = prediction&.match
+              - unless match.nil?
+                .column.is-half
+                  .card.has-text-centered
+                    .card-content
+                      = image_tag url_for(match&.competition&.logo), class: 'competition-logo', title: match&.competition&.name if match&.competition&.logo&.attached?
+                      p.is-size-4
+                        = match.started_at.strftime("%H:%M")
+                      p.has-text-weight-bold
+                        = match_type match.match_type
+                      .columns
+                        = render 'team', match: match, team: match.first_team, attribute: 'first_team', prediction: prediction
+                        = render 'team', match: match, team: match.second_team, attribute: 'second_team', prediction: prediction
+                      - if match.ended?
+                        - if prediction.perfect?
+                          p.has-text-centered.has-text-weight-bold.is-size-3.has-text-success
+                            | +3
+                        - elsif prediction.right?
+                          p.has-text-centered.has-text-weight-bold.is-size-3
+                            | +1
+                        - else
+                          p.has-text-centered.has-text-weight-bold.is-size-3.has-text-danger
+                            | 0
+

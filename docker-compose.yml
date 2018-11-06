@@ -1,0 +1,18 @@
+version: '2'
+services:
+  queueup-predictions-development:
+    image: mysql
+    container_name: queueup-predictions
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    ports:
+      - 6010:5432/tcp
+  queueup-predictions-test:
+    image: mysql
+    container_name: queueup-predictions-test
+    environment:
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+    ports:
+      - 6011:5432/tcp

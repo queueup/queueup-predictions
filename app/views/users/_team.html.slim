@@ -1,0 +1,12 @@
+.column.has-text-centered.team.is-half
+  = image_tag url_for(team&.logo), class: 'team-logo', title: team&.name
+  h2.title.team_name
+    = team&.acronym
+  .columns
+    .column.is-third
+    .column.is-third
+      - if match.ended?
+        p.has-text-centered.has-text-weight-bold.is-size-4 class=(prediction["#{attribute}_score"] == match["#{attribute}_score"] ? 'has-text-success' : 'has-text-danger')
+          = match["#{attribute}_score"]
+      = text_field_tag "#{attribute}_score", prediction["#{attribute}_score"].to_i, class: 'input has-text-centered', disabled: :disabled, autocomplete: :off
+    .column.is-third

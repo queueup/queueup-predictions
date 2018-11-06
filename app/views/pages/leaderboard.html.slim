@@ -1,0 +1,27 @@
+.content
+  h1.is-size-1 Leaderboard
+  table.table.is-hoverable.is-fullwidth.leaderboard-table
+    thead
+      tr
+        th Position
+        th Username
+        th.has-text-centered Score
+        th.has-text-centered Number of predictions
+        th.has-text-right Last update
+    tbody
+      - @users.each_with_index do |user, idx|
+        tr
+          th = idx + 1
+          td
+            .user
+              = image_tag avatar_url(user.email, 40), class: 'avatar'
+              = link_to user.username, user_path(user)
+              | &nbsp;&nbsp;&nbsp;&nbsp;
+              - if user.id == current_user&.id
+                span.tag.is-success
+                  | You
+          td.has-text-centered = user.score
+          td.has-text-centered = user.predictions.count
+          td.has-text-right = user.updated_at.strftime("%d %B %Y at %H:%M")
+        
+      

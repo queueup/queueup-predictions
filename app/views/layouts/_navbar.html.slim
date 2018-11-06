@@ -1,0 +1,24 @@
+nav.navbar.is-fixed-top aria-label=("main navigation") role="navigation" 
+  .navbar-brand
+    = link_to root_path, class: 'navbar-item' do
+      img src="https://blog.queueup.gg/content/images/2018/08/Logo_QueueUp.png"
+    .navbar-burger.burger data-target="main-navbar"
+      span
+      span
+      span
+  #main-navbar.navbar-menu
+    .navbar-start
+      = link_to 'Home', root_path, class: 'navbar-item'
+      = link_to 'Find Teammates', 'https://queueup.gg/', class: 'navbar-item'
+      = link_to 'Worlds Articles', 'https://blog.queueup.gg/tag/league-of-legends-world-championship/', class: 'navbar-item'
+    .navbar-end
+      = link_to 'https://facebook.com/queueupgg', class: 'navbar-item facebook' do
+        span.icon
+          i.fab.fa-facebook
+      = link_to 'https://twitter.com/queueupgg', class: 'navbar-item twitter' do
+        span.icon
+          i.fab.fa-twitter
+      = link_to 'https://discord.gg/Zk2fsnN', class: 'navbar-item discord' do
+        span.icon
+          i.fab.fa-discord
+        | &nbsp;&nbsp;&nbsp;&nbsp;Come chat with us !

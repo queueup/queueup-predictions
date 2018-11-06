@@ -1,0 +1,12 @@
+.column.has-text-centered.team.is-half
+  = image_tag url_for(team&.logo), class: 'team-logo', title: team&.name
+  h2.title.team-name
+    = team&.acronym
+  .columns
+    .column.is-third
+    .column.is-third
+      - if match.ended?
+        p.has-text-centered.has-text-weight-bold.is-size-4 class=(form.object["#{attribute}_score"] == match["#{attribute}_score"] ? 'has-text-success' : 'has-text-danger')
+          = match["#{attribute}_score"]
+      = form.text_field "#{attribute}_score", class: 'input has-text-centered', disabled: match.locked? || match.ended? ? :disabled : nil, autocomplete: :off
+    .column.is-third

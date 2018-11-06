@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_team: one
+  second_team: one
+  winner: one
+  started_at: 2018-10-01 11:52:19
+
+two:
+  first_team: two
+  second_team: two
+  winner: two
+  started_at: 2018-10-01 11:52:19

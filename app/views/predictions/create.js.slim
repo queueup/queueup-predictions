@@ -1,0 +1,15 @@
+|
+  var match_card = $('#match_#{@prediction&.match&.id}');
+  var match_button = match_card.find('button');
+  match_button
+    .toggleClass('is-primary')
+    .toggleClass('is-success')
+    .text('Updated !')
+    .prop('disabled', true);
+  setTimeout(function() {
+    match_button
+      .toggleClass('is-primary')
+      .toggleClass('is-success')
+      .text('Update')
+      .prop('disabled', false);
+  }, 2500);

@@ -1,0 +1,85 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  background: #FAFAFA;
+  min-height: 100vh;
+}
+
+.leaderboard-table {
+  td, th {
+    vertical-align: middle;
+
+    .user {
+      align-items: center;
+      display: flex;
+
+      .avatar {
+        border-radius: 100%;
+        margin-right: .6rem;
+      }
+    }
+  }
+}
+
+.button {
+  &.is-primary {
+    background-color: #007FFF;
+    transition: all .3s ease;
+
+    &:active {
+      background-color: #3399FF;
+    }
+
+    &:hover {
+      background-color: #3399FF;
+    }
+    &[disabled] {
+      background-color: rgba(#007FFF, .3);
+    }
+  }
+}
+
+.card {
+  border-radius: 4px;
+  box-shadow: -1px 10px 30px -12px rgba(0,0,0,0.2);
+  transition: all .3s ease;
+
+  &:hover {
+    box-shadow: -1px 15px 30px -12px rgba(0,0,0,0.2);
+  }
+
+  &.success {
+    background: #fafffa;
+  }
+}
+
+.team {
+  .team-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .team-logo {
+    height: 100px;
+    object-fit: contain;
+    width: 100px;
+  }
+}
+.competition-logo {
+  height: 60px;
+  margin-top: -30px;
+  object-fit: contain;
+  width: 60px;
+}
+
+.table tr.is-selected {
+  background-color: rgba(#007FFF, .1);
+  color: #000;
+}
+
+.content table td, .content table th {
+  vertical-align: middle;
+}

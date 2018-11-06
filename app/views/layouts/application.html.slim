@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title
+      | Predictions - QueueUp
+    = csrf_meta_tags
+    meta content="width=device-width, initial-scale=1" name="viewport" 
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    link href="//fonts.googleapis.com/css?family=Lato&subset=latin" rel="stylesheet" type="text/css"
+    link href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" rel="stylesheet" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"
+    link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="120x120"
+    link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"
+    link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"
+    link href="/manifest.json" rel="manifest"
+    link color="#5bbad5" href="/safari-pinned-tab.svg" rel="mask-icon"
+    meta content="#da532c" name="msapplication-TileColor"
+    meta content="#ffffff" name="theme-color"
+    meta property="og:title" content="QueueUp Predictions"
+    meta property="og:description" content="Challenge your friends, share your predictions"
+    meta property="og:site_name" content="QueueUp"
+    meta property="og:type" content="website"
+    meta property="og:url" content="https://predictions.queueup.gg/"
+    = tag :meta, property: 'og:image', content: 'https://predictions.queueup.gg/open-graph.png'
+
+  body.has-navbar-fixed-top
+    = render 'layouts/navbar'
+    .section
+      .columns
+        .column.is-one-quarter
+          = render 'layouts/sidebar'
+        .column
+          = yield
+    script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-110215669-3" 
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('set', {'user_id': '#{current_user&.email}'});
+      gtag('config', 'UA-110215669-3');
